@@ -1,0 +1,5 @@
+@Library('springCloudPipeline') _
+
+springCloudPipeline(branch :'master',
+        scmUrl : 'https://github.com/wuxudong/spring-cloud-best-practice.git',
+        serviceName : 'user')
