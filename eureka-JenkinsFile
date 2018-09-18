@@ -1,4 +1,4 @@
-load "var/springCloudPipeline.Groovy "
+@Library('springCloudPipeline') _
 
 springCloudPipeline {    
         branch = 'master'
