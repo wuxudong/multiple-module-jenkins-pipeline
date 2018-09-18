@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         branch = 'master'
-        scmUrl = 'https://github.com/wuxudong/multiple-module-jenkins-pipeline.git'        
+        scmUrl = 'https://github.com/wuxudong/spring-cloud-best-practice.git'        
     }
     stages {
         stage('checkout git') {
