@@ -13,6 +13,8 @@ def call(Map pipelineParams) {
         stages {
             stage('checkout git') {
                 steps {
+
+                    sh "echo ${pipelineParams.branch} ${branch} ${pipelineParams.scmUrl} ${scmUrl}"
                     git branch: branch, url: scmUrl
                 }
             }
