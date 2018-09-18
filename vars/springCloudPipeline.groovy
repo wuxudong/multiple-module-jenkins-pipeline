@@ -6,8 +6,8 @@ def call(Map pipelineParams) {
     pipeline {
         agent any
         environment {
-            branch = TernaryUtils.getOrDefault(${pipelineParams.branch},"master")
-            scmUrl = TernaryUtils.getOrDefault(${pipelineParams.scmUrl},"https://github.com/wuxudong/spring-cloud-best-practice.git")
+            branch = TernaryUtils.getOrDefault(pipelineParams.branch,"master")
+            scmUrl = TernaryUtils.getOrDefault(pipelineParams.scmUrl,"https://github.com/wuxudong/spring-cloud-best-practice.git")
             serviceName = "${pipelineParams.serviceName}"
         }
         stages {
