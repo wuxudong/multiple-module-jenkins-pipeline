@@ -2,4 +2,4 @@
 
 springCloudPipeline.springCloudPipeline(branch :'master',
         scmUrl : 'https://github.com/wuxudong/spring-cloud-best-practice.git',
-        serviceName : 'eureka'})
+        serviceName : 'eureka')
