@@ -1,0 +1,30 @@
+pipeline {
+    agent any
+    environment {
+        branch = 'master'
+        scmUrl = 'ssh://git@github.com:wuxudong/spring-cloud-best-practice.git'        
+    }
+    stages {
+        stage('checkout git') {
+            steps {
+                git branch: branch, url: scmUrl
+            }
+        }
+
+        stage('build') {
+            steps {
+                sh 'mvn clean package -DskipTests=true'
+            }
+        }
+
+        stage('deploy'){
+            steps {
+                nohup java -jar euraka/target/eureka.jar &
+                deploy(developmentServer, serverPort)
+            }
+        }
+
+        
+    }
+    
+}
