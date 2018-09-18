@@ -1,9 +1,13 @@
 def call(Map pipelineParams) {
+    def getOrDefault(value, defaultValue) {
+        return value ? value : defaultValue
+    }
+
     pipeline {
         agent any
         environment {
-            branch = ${pipelineParams.branch} ? "${pipelineParams.branch}" : 'master'
-            scmUrl = ${pipelineParams.scmUrl} ? "${pipelineParams.scmUrl}" : 'https://github.com/wuxudong/spring-cloud-best-practice.git'
+            branch = getOrDefault("${pipelineParams.branch}","master")
+            scmUrl = getOrDefault("${pipelineParams.scmUrl}","https://github.com/wuxudong/spring-cloud-best-practice.git"
             serviceName = "${pipelineParams.serviceName}"
         }
         stages {
@@ -21,7 +25,6 @@ def call(Map pipelineParams) {
 
             stage('deploy'){
                 steps {
-
                     sh "echo `ps -ef | grep ${serviceName} | grep -v grep | awk '{print \$2}'`"
                     sh "JENKINS_NODE_COOKIE=dontKillMe nohup java -jar ${serviceName}/target/${serviceName}.jar &"
                 }
