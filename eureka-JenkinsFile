@@ -1,5 +1,5 @@
-@Library('springCloudPipeline') springCloudPipeline
+@Library('springCloudPipeline') _
 
-springCloudPipeline.springCloudPipeline(branch :'master',
+springCloudPipeline(branch :'master',
         scmUrl : 'https://github.com/wuxudong/spring-cloud-best-practice.git',
         serviceName : 'eureka')
