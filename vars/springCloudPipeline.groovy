@@ -2,9 +2,9 @@ def call(Map pipelineParams) {
     pipeline {
         agent any
         environment {
-            branch = pipelineParams.branch
-            scmUrl = pipelineParams.scmUrl
-            serviceName = pipelineParams.serviceName
+            branch = ${pipelineParams.branch}
+            scmUrl = ${pipelineParams.scmUrl}
+            serviceName = ${pipelineParams.serviceName}
         }
         stages {
             stage('checkout git') {
