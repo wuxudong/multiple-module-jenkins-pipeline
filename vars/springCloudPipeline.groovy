@@ -1,11 +1,13 @@
+import com.github.wuxudong.pipeline.utils.TernaryUtils
+
 def call(Map pipelineParams) {
    
 
     pipeline {
         agent any
         environment {
-            branch = getOrDefault("${pipelineParams.branch}","master")
-            scmUrl = getOrDefault("${pipelineParams.scmUrl}","https://github.com/wuxudong/spring-cloud-best-practice.git")
+            branch = TernaryUtils.getOrDefault("${pipelineParams.branch}","master")
+            scmUrl = TernaryUtils.getOrDefault("${pipelineParams.scmUrl}","https://github.com/wuxudong/spring-cloud-best-practice.git")
             serviceName = "${pipelineParams.serviceName}"
         }
         stages {
@@ -33,8 +35,5 @@ def call(Map pipelineParams) {
     
 
     }
-
-    def getOrDefault(value, defaultValue) {
-        return value ? value : defaultValue
-    }
+  
 }
