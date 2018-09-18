@@ -1,3 +1,5 @@
+load "var/springCloudPipeline.Groovy "
+
 springCloudPipeline {    
         branch = 'master'
         scmUrl = 'https://github.com/wuxudong/spring-cloud-best-practice.git'        
