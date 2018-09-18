@@ -7,7 +7,7 @@ def call(Map pipelineParams) {
         agent any
         environment {
             branch = getOrDefault("${pipelineParams.branch}","master")
-            scmUrl = getOrDefault("${pipelineParams.scmUrl}","https://github.com/wuxudong/spring-cloud-best-practice.git"
+            scmUrl = getOrDefault("${pipelineParams.scmUrl}","https://github.com/wuxudong/spring-cloud-best-practice.git")
             serviceName = "${pipelineParams.serviceName}"
         }
         stages {
