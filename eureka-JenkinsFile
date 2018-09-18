@@ -1,4 +1,3 @@
 @Library('springCloudPipeline') _
 
-springCloudPipeline(branch :'master',        
-        serviceName : 'eureka')
+springCloudPipeline(serviceName : 'eureka')

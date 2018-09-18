@@ -27,7 +27,7 @@ def call(Map pipelineParams) {
 
             stage('deploy'){
                 steps {
-                    sh "echo `ps -ef | grep ${serviceName} | grep -v grep | awk '{print \$2}'`"
+                    sh "echo `ps -ef | grep ${serviceName}.jar | grep -v grep | awk '{print \$2}'`"
                     sh "JENKINS_NODE_COOKIE=dontKillMe nohup java -jar ${serviceName}/target/${serviceName}.jar &"
                 }
             }
