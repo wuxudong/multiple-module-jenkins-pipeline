@@ -1,7 +1,5 @@
 def call(Map pipelineParams) {
-    def getOrDefault(value, defaultValue) {
-        return value ? value : defaultValue
-    }
+   
 
     pipeline {
         agent any
@@ -33,5 +31,10 @@ def call(Map pipelineParams) {
         
         }
     
+
+    }
+
+    def getOrDefault(value, defaultValue) {
+        return value ? value : defaultValue
     }
 }
