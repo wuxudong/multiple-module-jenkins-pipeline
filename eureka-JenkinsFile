@@ -19,8 +19,7 @@ pipeline {
 
         stage('deploy'){
             steps {
-                sh 'nohup java -jar euraka/target/eureka.jar &'
-                deploy(developmentServer, serverPort)
+                sh 'nohup java -jar euraka/target/eureka.jar &'                
             }
         }
 
