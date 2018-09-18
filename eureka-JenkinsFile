@@ -19,7 +19,7 @@ pipeline {
 
         stage('deploy'){
             steps {
-                sh 'pwd && nohup java -jar euraka/target/eureka.jar &'                
+                sh 'nohup java -jar eureka/target/eureka.jar &'                
             }
         }
 
