@@ -12,9 +12,7 @@ def call(Map pipelineParams) {
         }
         stages {
             stage('checkout git') {
-                steps {
-
-                    sh "echo ${pipelineParams.branch} ${branch} ${pipelineParams.scmUrl} ${scmUrl}"
+                steps {                    
                     git branch: branch, url: scmUrl
                 }
             }
@@ -27,7 +25,7 @@ def call(Map pipelineParams) {
 
             stage('deploy'){
                 steps {
-                    sh "echo `ps -ef | grep ${serviceName}.jar | grep -v grep | awk '{print \$2}'`"
+                    sh "ps -ef | grep ${serviceName}.jar | grep -v grep | awk '{print \$2}' | xargs kill"
                     sh "JENKINS_NODE_COOKIE=dontKillMe nohup java -jar ${serviceName}/target/${serviceName}.jar &"
                 }
             }
