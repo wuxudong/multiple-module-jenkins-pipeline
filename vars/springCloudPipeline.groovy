@@ -24,8 +24,8 @@ def call(Map pipelineParams) {
                         
                         def parallelStagesMap = jobs.collectEntries {
                            ["${it}" : {
-                                stage("stage: ${job}") {
-                                        echo "This is ${job}."
+                                stage("stage: ${it}") {
+                                        echo "This is ${it}."
                                         sh script: "sleep 15"
                                 }
                             }]
