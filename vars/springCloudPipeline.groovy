@@ -31,6 +31,10 @@ def call(Map pipelineParams) {
                             }]
                         }
 
+                        stage("stage: just wait") {
+                                        echo "This is ${it}."
+                                        sh script: "sleep 15"
+                        }
                         parallelStagesMap
                     }
                 }
