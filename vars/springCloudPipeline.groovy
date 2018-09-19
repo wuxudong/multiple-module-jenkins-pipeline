@@ -44,8 +44,19 @@ def call(Map pipelineParams) {
 
                         for (def index = 0; index < jobs.size(); index++) {
                             stage("stage: ${jobs[index]}") {
-                                echo "This is ${jobs[index]}."
-                                sh script: "sleep 15"
+                                stages {
+                                    stage("sleep : ${jobs[index]}") {
+                                        echo "sleep ${jobs[index]}."
+                                        sh script: "sleep 15"
+                                    }
+
+                                    stage("wakeup : ${jobs[index]}") {
+                                        echo "wakeup ${jobs[index]}."
+                                        sh script: "sleep 15"
+                                    }
+
+                                }
+                                
                             }
                         }
                     }
