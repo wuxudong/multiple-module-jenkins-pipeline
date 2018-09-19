@@ -7,10 +7,13 @@ import com.github.wuxudong.pipeline.utils.TernaryUtils
 def call(Map pipelineParams) {
     def jobs = ["JobA", "JobB", "JobC"]
 
+    def stageGenerator = load "stageGenerator.groovy"
+    
     def parallelStagesMap = jobs.collectEntries {
-       ["${it}" : generateStage(it)]
+       ["${it}" : stageGenerator.generateStage(it)]
     }
 
+    
     pipeline {
         agent any
         environment {
