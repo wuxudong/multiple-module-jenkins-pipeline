@@ -7,15 +7,6 @@ import com.github.wuxudong.pipeline.utils.TernaryUtils
 def call(Map pipelineParams) {
     def jobs = ["JobA", "JobB", "JobC"]
 
-    def generateStage(job) {
-        return {
-            stage("stage: ${job}") {
-                echo "This is ${job}."
-                sh script: "sleep 15"
-            }
-        }
-    }
-
     def parallelStagesMap = jobs.collectEntries {
        ["${it}" : generateStage(it)]
     }
