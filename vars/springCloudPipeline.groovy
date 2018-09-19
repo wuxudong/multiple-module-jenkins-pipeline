@@ -20,15 +20,15 @@ def call(Map pipelineParams) {
                     script {
                         def jobs = ["JobA", "JobB", "JobC"]
 
-                        def stageGenerator = (jobs) => {
-                            stage("stage: ${job}") {
-                                    echo "This is ${job}."
-                                    sh script: "sleep 15"
-                            }
-                        }
+                      
                         
                         def parallelStagesMap = jobs.collectEntries {
-                           ["${it}" : stageGenerator.generateStage(it)]
+                           ["${it}" : {
+                                stage("stage: ${job}") {
+                                        echo "This is ${job}."
+                                        sh script: "sleep 15"
+                                }
+                            }]
                         }
 
                         parallel parallelStagesMap
