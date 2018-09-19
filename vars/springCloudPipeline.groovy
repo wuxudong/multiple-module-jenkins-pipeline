@@ -31,7 +31,7 @@ def call(Map pipelineParams) {
                             }]
                         }
 
-                        parallelStagesMap
+                        parallel parallelStagesMap
                     }
                 }
             }
