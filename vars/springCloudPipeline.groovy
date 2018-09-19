@@ -40,7 +40,14 @@ def call(Map pipelineParams) {
                                         echo "This is wait again."
                                         sh script: "sleep 15"
                         }
-                        parallelStagesMap
+                        
+
+                        for (def index = 0; index < jobs.size(); index++) {
+                            stage("stage: ${jobs[index]}") {
+                                echo "This is ${jobs[index]}."
+                                sh script: "sleep 15"
+                            }
+                        }
                     }
                 }
             }
