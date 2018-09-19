@@ -32,7 +32,12 @@ def call(Map pipelineParams) {
                         }
 
                         stage("stage: just wait") {
-                                        echo "This is ${it}."
+                                        echo "This is wait."
+                                        sh script: "sleep 15"
+                        }
+
+                        stage("stage: just wait again") {
+                                        echo "This is wait again."
                                         sh script: "sleep 15"
                         }
                         parallelStagesMap
