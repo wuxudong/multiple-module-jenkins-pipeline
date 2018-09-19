@@ -33,12 +33,12 @@ def call(Map pipelineParams) {
 
                         stage("stage: just wait") {
                                         echo "This is wait."
-                                        sh script: "sleep 15"
+                                        sh script: "sleep 5"
                         }
 
                         stage("stage: just wait again") {
                                         echo "This is wait again."
-                                        sh script: "sleep 15"
+                                        sh script: "sleep 5"
                         }
                         
 
@@ -46,17 +46,14 @@ def call(Map pipelineParams) {
                             
                             stage("sleep : ${jobs[index]}") {
                                 echo "sleep ${jobs[index]}."
-                                sh script: "sleep 15"
+                                sh script: "sleep 5"
                             }
 
                             stage("wakeup : ${jobs[index]}") {
                                 echo "wakeup ${jobs[index]}."
-                                sh script: "sleep 15"
+                                sh script: "sleep 5"
                             }
-
-                    
-                                
-                            }
+                            
                         }
                     }
                 }
