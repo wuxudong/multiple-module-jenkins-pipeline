@@ -1,7 +1,24 @@
 import com.github.wuxudong.pipeline.utils.TernaryUtils
 
+
+
+
+
 def call(Map pipelineParams) {
-   
+    def jobs = ["JobA", "JobB", "JobC"]
+
+    def generateStage(job) {
+        return {
+            stage("stage: ${job}") {
+                echo "This is ${job}."
+                sh script: "sleep 15"
+            }
+        }
+    }
+
+    def parallelStagesMap = jobs.collectEntries {
+       ["${it}" : generateStage(it)]
+    }
 
     pipeline {
         agent any
@@ -11,6 +28,14 @@ def call(Map pipelineParams) {
             serviceName = "${pipelineParams.serviceName}"
         }
         stages {
+            stage('parallel stage') {
+                steps {
+                    script {
+                        parallel parallelStagesMap
+                    }
+                }
+            }
+
             stage('checkout git') {
                 steps {                    
                     git branch: branch, url: scmUrl
